@@ -44,6 +44,7 @@ languages_to_import = {
     'coconut': ['coconut'],
     'go': ['go'],
     'rust': ['rustc', 'cargo'],
+    'kotlin': ['kotlin'],
 }
 
 for language, tools in languages_to_import.items():
@@ -59,8 +60,9 @@ for language, tools in languages_to_import.items():
 
 Export('env')
 
-env['CFLAGS'] = '-Wall -Wextra -Werror'
-env['CXXFLAGS'] = '-std=c++17'
+env['CCFLAGS'] = '-Wall -Wextra -Werror -pedantic -Wconversion'
+env['CFLAGS'] = '-std=gnu99'
+env['CXXFLAGS'] = '-std=c++17 -Wold-style-cast'
 env['ASFLAGS'] = '--64'
 env['COCONUTFLAGS'] = '--target 3.8'
 
@@ -78,6 +80,7 @@ languages = {
     'java': 'java',
     'javascript': 'js',
     'julia': 'jl',
+    'kotlin': 'kt',
     'lolcode': 'lol',
     'lua': 'lua',
     'php': 'php',
